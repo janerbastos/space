@@ -1,0 +1,14 @@
+{% extends 'space_layout/base.html' %}
+{% load space_extras %}
+
+{% block navbar_admin %}{% endblock navbar_admin %}
+
+{% block content %}
+
+    {% if modulo %}
+        {% include modulo|modulopage %}
+    {% endif %}
+
+    {% include 'space_layout/componentes/includes/form_modal.html' %}
+
+{% endblock content %}

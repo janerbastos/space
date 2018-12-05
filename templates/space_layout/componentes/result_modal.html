@@ -1,0 +1,10 @@
+{% if action == 'add-row' %}
+{% if object %}
+<li id="row_{{object.id}}">
+    <a href="#" title="{{object.descricao}}">?</a>&nbsp;
+    Código da reserva <strong>{{object.id}}</strong>, registrado em {{ object.data_pedido_at }}.
+    &nbsp;<a href="#"><i class="fa fa-reorder"></i> A. S</a>
+    &nbsp;<a href="#"><i class="fa fa-reorder"></i> D. S</a>
+</li>
+{% endif %}
+{% endif %}
