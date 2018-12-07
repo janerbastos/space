@@ -1,11 +1,10 @@
 #-*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 
-from space_manage.negocio.negocio import Negocio
-from space_manage.forms.categoria_forms import CategoriaEspacoForm
-from space_manage.models import CategoriaEspaco
-
-from space_manage.utils.contexto import  configure
+from space.negocio.negocio import Negocio
+from space.forms.categoria_forms import CategoriaEspacoForm
+from space.models import CategoriaEspaco
+from space.utils.contexto import configure
 
 
 class CategoriaNegocio(Negocio):

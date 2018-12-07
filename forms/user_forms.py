@@ -3,7 +3,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from space_manage.models import CHOICE_PAPEL_USUARIO
+from space.models import CHOICE_PAPEL_USUARIO
 
 
 class UserCreateForm(forms.ModelForm):

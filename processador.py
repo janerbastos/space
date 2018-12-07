@@ -2,10 +2,10 @@
 
 from django.http import Http404
 
-from .negocio.categoria_negocio import CategoriaNegocio
-from .negocio.espaco_negocio import EspacoNegocio
-from .negocio.gestor_negocio import GestorNegocio
-from space_manage.negocio.reserva_negocio import ReservaNegocio
+from space.negocio.categoria_negocio import CategoriaNegocio
+from space.negocio.espaco_negocio import EspacoNegocio
+from space.negocio.gestor_negocio import GestorNegocio
+from space.negocio.reserva_negocio import ReservaNegocio
 
 
 class Processador():

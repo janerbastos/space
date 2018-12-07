@@ -1,9 +1,9 @@
 #-*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 
-from space_manage.negocio.negocio import Negocio
-from space_manage.forms.espaco_forms import EspacoCreateForm
-from space_manage.models import Espaco
+from space.negocio.negocio import Negocio
+from space.forms.espaco_forms import EspacoCreateForm
+from space.models import Espaco
 
 from ..utils.contexto import  configure
 

@@ -5,12 +5,12 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.utils import timezone
 
-from space_manage.negocio.negocio import Negocio
-from space_manage.models import Reserva
-from space_manage.models import Espaco
-from space_manage.models import ItemReserva
-from space_manage.forms.reserva_forms import ReservaCreateForm
-from space_manage.utils.contexto import configure
+from space.negocio.negocio import Negocio
+from space.models import Reserva
+from space.models import Espaco
+from space.models import ItemReserva
+from space.forms.reserva_forms import ReservaCreateForm
+from space.utils.contexto import configure
 
 
 class ReservaNegocio(Negocio):

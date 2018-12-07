@@ -1,13 +1,13 @@
 #-*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-
 from django.contrib.auth.models import User
-from space_manage.negocio.negocio import Negocio
-from space_manage.forms.user_forms import UserCreateForm, UserUpdateForm
-from space_manage.models import Gestor
 
-from space_manage.utils.contexto import  configure
+from space.negocio.negocio import Negocio
+from space.forms.user_forms import UserCreateForm, UserUpdateForm
+from space.models import Gestor
+
+from space.utils.contexto import  configure
 
 
 class GestorNegocio(Negocio):

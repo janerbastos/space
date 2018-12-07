@@ -2,7 +2,7 @@
 
 from django import forms
 
-from space_manage.models import CategoriaEspaco
+from space.models import CategoriaEspaco
 
 
 class CategoriaEspacoForm(forms.ModelForm):

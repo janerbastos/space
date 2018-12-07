@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from django import forms
-from space_manage.models import Espaco
+from space.models import Espaco
 
 class EspacoCreateForm(forms.ModelForm):
 

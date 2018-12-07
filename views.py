@@ -2,8 +2,8 @@
 
 from django.shortcuts import render
 
-from .controller.requisicao_resposta import Processador
-from .utils.contexto import configure
+from space.controller.requisicao_resposta import Processador
+from space.utils.contexto import configure
 
 # Interface de acesso web
 

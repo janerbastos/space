@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-from space_manage.processador import Processador
+from space.processador import Processador
 
 
 class RequisicaoResposta():

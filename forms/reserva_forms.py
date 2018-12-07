@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from django import forms
-from space_manage.models import Reserva
+from space.models import Reserva
 
 class ReservaCreateForm(forms.ModelForm):
 
