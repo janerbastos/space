@@ -1,0 +1,13 @@
+  [{
+    "title": "Mini Auditório - Reitória",
+    "description": "Treinamento SIGAA",
+    "start": "2018-12-18T08:00:00",
+    "end": "2018-12-20T10:20:00",
+    "url": "http://google.com/"
+  },
+  {
+    "title": "Sala 510 IBEF",
+    "description": "Treinamento Mamba Negra",
+    "start": "2018-12-20T08:00:00",
+    "end": "2018-12-20T10:20:00"
+  }]
