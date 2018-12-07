@@ -26,7 +26,7 @@ class Gestor(models.Model):
     espaços fisicos
     """
     papel = models.CharField(max_length=30, default='solicitante', choices=CHOICE_PAPEL_USUARIO)
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, related_name='papel', on_delete=models.CASCADE)
 
 
 class CategoriaEspaco(models.Model):

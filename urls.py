@@ -21,4 +21,6 @@ urlpatterns = [
     path('reservas/', views.reservas, name='reservas'),
     path('reservas/<slug:action>/', views.reservas, name='manage-reservas'),
 
+    path('json/', views.events, name='events')
+
 ]

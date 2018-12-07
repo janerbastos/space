@@ -3,3 +3,5 @@
 _database.ini
 migrations/
 __pycache__
+node_modules
+package-lock.json

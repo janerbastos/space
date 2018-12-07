@@ -24,8 +24,8 @@ function run(url, param, modal) {
 		type : "GET",
         data : param,
         contentType : "application/josn; charset=utf-8",
-        success : function(data) {
-        	 modal.find('.modal-body p').html(data.result);
+        success : function(data, status) {
+        	modal.find('.modal-body').html(data.result);
         },
         error : function(xhr , errmsg, err) {
             console.log(xhr.status + ": " + xhr.responseText);
@@ -41,7 +41,7 @@ $('#form-ajax').on('submit', function(){
         data    : $(this).serialize(),
         cache   : false,
         success : function(data) {
-            $('.modal-body p').html(data.result);
+            $('.modal-body').html(data.result);
             //Atualiza o registro na tabela
             if (data.action == 'update'){
                 $('#row_' + data.oid).html(data.row)

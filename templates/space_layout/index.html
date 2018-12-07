@@ -7,8 +7,10 @@
 
     {% if modulo %}
         {% include modulo|modulopage %}
+    {% else %}
+        <div id="calendar"></div>
     {% endif %}
 
     {% include 'space_layout/componentes/includes/form_modal.html' %}
-
+    
 {% endblock content %}
