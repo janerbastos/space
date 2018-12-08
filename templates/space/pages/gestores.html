@@ -1,0 +1,35 @@
+{% load bootstrap %}
+
+{% block content %}
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Usuários</h6>
+        <div class="text-muted pt-3">
+            {% if action == 'list' %}
+                <p>
+                    <a href="{% url 'space:manage-gestores' 'create' %}"><i class="fa fa-plus-circle"></i> Create</a>
+                </p>
+            {% endif %}
+            {% if form %}
+                <form action="" method="POST" class="col-12">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    <input type="submit" value="Gravar" class="btn btn-success">
+                    <a href="{% url 'space:gestores' %}" class="btn btn-warning">Fechar</a>
+                    {% if object %}
+                        <a href="{% url 'space:manage-gestores' object.id 'delete' %}" class="btn btn-danger">Excluir</a>
+                    {% endif %}
+                </form>
+            {% else %}
+                {% if objects %}
+                    <ul>
+                        {% for item in objects %}
+                            <li><a href="{% url 'space:manage-gestores' item.id 'update' %}">{{item}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Nenhum objeto encontrado.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

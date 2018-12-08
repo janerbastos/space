@@ -1,0 +1,73 @@
+{% load bootstrap %}
+
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">{{ titulo }}s</h6>
+    <div class="text-muted pt-3">
+        {% if action == 'list' %}
+        <p>
+            <a href="{% url 'space:manage-reservas' 'create' %}"><i class="fa fa-plus-circle"></i> Create</a>
+        </p>
+        {% endif %}
+        {% if form %}
+        <form action="" method="POST" class="col-12">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-8 col-sm-6">
+                            {{form|bootstrap}}
+                        </div>
+                        <div class="col-4 col-sm-6">
+                            {% if objects %}
+                            <span class="text-success">Relação de espacos.</span>
+                            <hr>
+                            {% for item in objects %}
+                            <p><input type="checkbox" name="espacos" value="{{item.id}}" /> {{item.nome}}.</p>
+                            {% endfor %}
+                            {% else %}
+                            <p>Nenhum espaço disponível para reservar.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Gravar" class="btn btn-success">
+            <a href="{% url 'space:reservas' %}" class="btn btn-warning">Fechar</a>
+            {% if object %}
+            <a href="#" class="btn btn-danger">Excluir</a>
+            {% endif %}
+        </form>
+        {% else %}
+        <ul id="registros" style="list-style: none;">
+            {% if objects %}
+            {% for item in objects %}
+            <li id="row_{{ item.id }}" style="padding: 10px 0 10px 0;">
+                <a href="#collapse_{{ item.id }}" class="btn-success btn-sm" data-toggle="collapse" title="{{item.descricao}}"
+                aria-controls="collapse_{{ item.id }}">?</a>&nbsp;
+                Código da reserva <strong>{{item.id}}</strong>, registrado em {{ item.data_pedido_at }}.
+            </li>
+            <div class="collapse" id="collapse_{{ item.id }}">
+                <div class="card card-body">
+                    {{ item.descricao }}, <a href="#">A. S</a>&nbsp;<a href="#">D. S</a>
+                    <ul>
+                    {% for i in item.dados_reserva.all %}
+                        <li><strong>{{i.espaco.nome}}</strong>.<br>
+                            Período: de {{ i.inicio_at }} até {{ i.termino_at }}<br>
+                            Status: {{ i.get_info_reserva_display }}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <li>Nenhum reserva registrada.</li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
