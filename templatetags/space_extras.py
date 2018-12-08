@@ -8,5 +8,5 @@ register = template.Library()
 
 @register.filter(name='modulopage')
 def page_modulo(modulo_name):
-    source_file = "space_layout/pages/%s.html" % modulo_name
+    source_file = "space/pages/%s.html" % modulo_name
     return source_file

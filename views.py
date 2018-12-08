@@ -15,7 +15,7 @@ import json
 
 def index(request):
     data = configure(None, 'SPACE', 'Gestor de espaços', None, None, None, 'index')
-    return render(request, 'space_layout/index.html', context=data)
+    return render(request, 'space/index.html', context=data)
 
 
 def categorias(request, oid=None, action='list'):

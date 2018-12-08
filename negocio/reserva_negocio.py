@@ -37,8 +37,10 @@ class ReservaNegocio(Negocio):
         #Pesquisar se existe espaços para reserva
 
         espacos = Espaco.objects.all()
+        start = request.GET.get('start', '')
+        end = request.GET.get('end', '')
 
-        form = ReservaCreateForm(request.POST or None, instance=self.reserva)
+        form = ReservaCreateForm(request.POST or None, instance=self.reserva, initial={'inicio_at': start})
         model = None
         is_save = False
         user = request.user
@@ -53,14 +55,15 @@ class ReservaNegocio(Negocio):
             form = ReservaCreateForm()
         
         if request.is_ajax():
-            html = render_to_string('space_layout/componentes/aux_modal_form.html', {'form': form, 'opcao': 'reservar', 'objects': espacos})
+            html = render_to_string('space/componentes/aux_modal_form.html', {'form': form, 'opcao': 'reservar', 'objects': espacos})
             data = {
                 'result': html,
                 'action': 'create',
                 'row': '',
             }
             if is_save:
-                data['row'] = render_to_string('space_layout/componentes/result_modal.html', context={'object': model, 'is_save': is_save, 'action': 'add-row'})
+                data['row'] = render_to_string('space/componentes/result_modal.html',
+                context={'object': model, 'is_save': is_save, 'action': 'add-row'})
             
             return JsonResponse(data)
 
