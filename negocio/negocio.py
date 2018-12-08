@@ -6,6 +6,9 @@ class Negocio(abstract):
     """
     Classe de negocio abstrata
     """
+    
+    template = 'space/index.html'
+
 
     def create(self, request):
         """

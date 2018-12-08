@@ -30,7 +30,7 @@ class EspacoNegocio(Negocio):
             return redirect('space:espacos')
         data = configure(form, 'Espaço físico', 'Criando uma espaço físico.', self.espaco, None, 'espacos', 'create')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def update(self, request):
@@ -44,13 +44,13 @@ class EspacoNegocio(Negocio):
             return redirect('space:espacos')
         data = configure(form, 'Espaço físico', 'Atualizando uma espaço físico.', self.espaco, None, 'espacos', 'update')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def list(self, request):
         espacos = Espaco.objects.all()
         data = configure(None, 'Espaços Físicos', 'Relação de conteúdos encontreado.', None, espacos, 'espacos', 'list')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def delete(self, request):

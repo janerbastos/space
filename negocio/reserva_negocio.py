@@ -68,7 +68,7 @@ class ReservaNegocio(Negocio):
             return redirect('space:reservas')
 
         data = configure(form, 'Reserva', 'Solicitação de espaço(s)...', self.reserva, espacos, 'reservas', 'create')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def update(self, request):
@@ -86,7 +86,7 @@ class ReservaNegocio(Negocio):
             return redirect('space:reservas')
 
         data = configure(form, 'Reserva', 'Atualização de reserva(s)...', self.reserva, None, 'reservas', 'update')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def list(self, request):
@@ -96,7 +96,7 @@ class ReservaNegocio(Negocio):
         user = request.user
         reservas = Reserva.objects.filter(solicitante=user).order_by('-data_pedido_at')
         data = configure(None, 'Reserva', 'Minhas reservas...', None, reservas, 'reservas', 'list')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def delete(self, request):

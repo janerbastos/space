@@ -39,7 +39,7 @@ class GestorNegocio(Negocio):
             return redirect('space:gestores')
         data = configure(form, 'Usuarios', 'Criando uma gestor de espaços.', self.gestor, None, 'gestores', 'create')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def update(self, request):
@@ -53,13 +53,13 @@ class GestorNegocio(Negocio):
             return redirect('space:gestores')
         data = configure(form, 'Usuários', 'Atualizando uma gestor espaços.', self.gestor, None, 'gestores', 'update')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def list(self, request):
         gestores = Gestor.objects.all()
         data = configure(None, 'Usuários', 'Relação de conteúdos encontreado.', None, gestores, 'gestores', 'list')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def delete(self, request):

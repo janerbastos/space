@@ -28,7 +28,7 @@ class CategoriaNegocio(Negocio):
             return redirect('space:categorias')
         data = configure(form, 'Categoria', 'Criando uma categoria.', self.categoria, None, 'categorias', 'create')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def update(self, request):
@@ -42,13 +42,13 @@ class CategoriaNegocio(Negocio):
             return redirect('space:categorias')
         data = configure(form, 'Categoria', 'Atualizando uma categoria.', self.categoria, None, 'categorias', 'update')
 
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def list(self, request):
         categorias = CategoriaEspaco.objects.all()
         data = configure(None, 'Categorias', 'Relação de conteúdos encontreado.', None, categorias, 'categorias', 'list')
-        return render(request, 'space_layout/index.html', context=data)
+        return render(request, self.template, context=data)
 
 
     def delete(self, request):
