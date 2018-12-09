@@ -39,5 +39,7 @@ class Processador():
                 return method[tipo].delete(request)
             if action == 'list':
                 return method[tipo].list(request)
+            if action == 'add_item':
+                return method[tipo].add_item(request)
 
         raise Http404('Solictação não pode ser atendida')

@@ -10,8 +10,16 @@
             </div>
             <form action="" method="POST" id="form-ajax">
                 {% csrf_token %}
+                <div id="error" class="text-danger text-center"></div>
+                <div class="form-row align-items-center" style="padding: 1rem;">
+                    <div class="col"><input type="text" name="txt_search" id="txt-seach" class="form-control"
+                            placeholder="Informe um nome de usuário"></div>
+                    <div class="col-auto">
+                        <input type="button" class="btn" name="btn_search" id="btn_pesquisar" value="Pesquisar">
+                    </div>
+                </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="btn-save">Save</button>

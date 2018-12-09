@@ -22,3 +22,14 @@ def configure(form, titulo, descricao, object, objects, modulo, action):
         'action': action
     }
     return data
+
+
+def urlToList(url):
+    return url.strip('/').split('/')
+
+
+def excluir_ultimo_item(url):
+    array = urlToList(url)
+    aux = array[:len(array)-1]
+    new = '/'.join(i for i in aux)
+    return '/%s/' % new

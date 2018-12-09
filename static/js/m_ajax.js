@@ -19,6 +19,7 @@ $('#form-modal').on('shown.bs.modal', function (event) {
 });
 
 function run(url, param, modal) {
+    $('#error').html('');
 	$.ajax({
 		url: url,
 		type : "GET",
@@ -31,7 +32,8 @@ function run(url, param, modal) {
             console.log(xhr.status + ": " + xhr.responseText);
         }
 	});
-}
+};
+
 
 $('#form-ajax').on('submit', function(){
     $.ajax({
@@ -40,7 +42,7 @@ $('#form-ajax').on('submit', function(){
         dataType: 'json',
         data    : $(this).serialize(),
         cache   : false,
-        success : function(data) {
+        success : function(data, status) {
             $('.modal-body').html(data.result);
             //Atualiza o registro na tabela
             if (data.action == 'update'){
@@ -50,10 +52,31 @@ $('#form-ajax').on('submit', function(){
             if (data.action == 'create'){
                 $('#registros li:first').after(data.row);
             }
+
+            if ( data.action == 'fechar'){
+                $('#form-modal').modal('hide');
+                reload("#show-pagina", data.url);
+            }
+            
         },
         error : function(xhr , errmsg, err) {
-            console.log(xhr.status + ": " + xhr.responseText);
+            console.log(xhr.status + ": " + xhr.data);
         },
     });    
     return false;
 });
+
+function reload(tag_id, url){
+    $.get(url, function(data, status){
+        $(tag_id).html(data.result);
+    });
+}
+
+$('#btn_pesquisar').on('click', function(event){
+    var url = $('#form-ajax').attr('action');
+    var search = $('#txt-seach').val();
+    $.get(url+'?search='+search, function(data, status){
+        $('.modal-body').html(data.result);
+    })
+});
+

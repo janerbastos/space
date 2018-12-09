@@ -8,6 +8,7 @@ class Negocio(abstract):
     """
     
     template = 'space/index.html'
+    pages = 'space/pages/%s.html'
 
 
     def create(self, request):

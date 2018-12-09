@@ -103,7 +103,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="{% url 'space:categorias' %}">Categorias</a>
                         <a class="dropdown-item" href="{% url 'space:espacos' %}">Espaços Fisicos</a>
-                        <a class="dropdown-item" href="{% url 'space:gestores' %}">Usuários</a>
+                        <a class="dropdown-item" href="{% url 'space:gestores' %}">Gestores</a>
                         <div class="dropdown-divider"></div>
                         <a href="{% url 'space:reservas' %}" class="dropdown-item">Reservas</a>
                     </div>
@@ -138,7 +138,6 @@
 
     <main role="main" class="container">
         {% block container %}
-
         {% block header_page %}
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
             <img class="mr-3" src="{% static 'img/bootstrap-outline.svg' %}" alt="" width="48" height="48">
@@ -148,7 +147,7 @@
             </div>
         </div>
         {% endblock header_page %}
-
+        
         {% block content %}
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>

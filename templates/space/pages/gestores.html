@@ -1,13 +1,19 @@
 {% load bootstrap %}
 
 {% block content %}
+<div id="show-pagina">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Usuários</h6>
         <div class="text-muted pt-3">
             {% if action == 'list' %}
-                <p>
-                    <a href="{% url 'space:manage-gestores' 'create' %}"><i class="fa fa-plus-circle"></i> Create</a>
-                </p>
+                <span>
+                    <a href="#" data-toggle="modal" class="nav-link"
+                        data-target="#form-modal"
+                        data-action="create"
+                        data-titulo="Novo Gestor"
+                        data-url='{% url 'space:manage-gestores' 'add_item' %}' >
+                        <i class="fa fa-plus-circle"></i> Create</a>
+                </span>
             {% endif %}
             {% if form %}
                 <form action="" method="POST" class="col-12">
@@ -32,4 +38,5 @@
             {% endif %}
         </div>
     </div>
+</div>
 {% endblock content %}

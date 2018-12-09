@@ -29,6 +29,10 @@ class Gestor(models.Model):
     usuario = models.OneToOneField(User, related_name='papel', on_delete=models.CASCADE)
 
 
+    def __str__(self):
+        return self.usuario.get_full_name()
+
+
 class CategoriaEspaco(models.Model):
     """
     Classe que abstai categorizador de tipo de espaço fisico para reserva
