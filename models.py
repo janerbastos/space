@@ -32,6 +32,7 @@ class Localizacao(models.Model):
     def __str__(self):
         return self.nome
 
+
 class Gestor(models.Model):
     """
     Classe de modelo que abstrai usuário(s) responsável pela gestão de seus
