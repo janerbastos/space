@@ -20,6 +20,18 @@ CHOICE_PAPEL_USUARIO = (
 )
 
 
+class Localizacao(models.Model):
+    """
+    Class que abstrai a localização de espaços
+    """
+    nome = models.CharField(max_length=50)
+    endereco = models.TextField()
+    latitude = models.CharField(max_length=20, null=True, blank=True)
+    longitude = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
+
 class Gestor(models.Model):
     """
     Classe de modelo que abstrai usuário(s) responsável pela gestão de seus
@@ -54,6 +66,8 @@ class Espaco(models.Model):
     descricao = models.TextField(null=True, blank=True)
     gestor = models.ForeignKey(Gestor, on_delete=models.CASCADE)
     categoria = models.ForeignKey(CategoriaEspaco, on_delete=models.CASCADE)
+    localizacao = models.ForeignKey(Localizacao, on_delete=models.CASCADE)
+    permiti_locacao = models.BooleanField(default=False)
 
 
     def __str__(self):
