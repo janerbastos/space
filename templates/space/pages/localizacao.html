@@ -1,0 +1,33 @@
+{% load bootstrap %}
+
+{% block content %}
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Localização</h6>
+        <div class="text-muted pt-3">
+            {% if action == 'list' %}
+                <p>
+                    <a href="{% url 'space:manage-localizacao' %}?action=create"><i class="fa fa-plus-circle"></i> Create</a>
+                </p>
+            {% endif %}
+            {% if form %}
+                <form action="" method="POST" class="col-12">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    <input type="submit" value="Gravar" class="btn btn-success">
+                    <a href="{% url 'space:manage-localizacao' %}" class="btn btn-warning">Fechar</a>
+                    {% if object %}
+                        <a href="{% url 'space:manage-localizacao' object.id %}?action=delete" class="btn btn-danger">Excluir</a>
+                    {% endif %}
+                </form>
+            {% else %}
+                {% if objects %}
+                    <ul>
+                        {% for item in objects %}
+                        <li><a href="{% url 'space:manage-localizacao' item.id %}?action=update">{{item}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

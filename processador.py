@@ -6,6 +6,7 @@ from space.negocio.categoria_negocio import CategoriaNegocio
 from space.negocio.espaco_negocio import EspacoNegocio
 from space.negocio.gestor_negocio import GestorNegocio
 from space.negocio.reserva_negocio import ReservaNegocio
+from space.negocio.localizacao_negocio import LocalizacaoNegocio
 
 
 class Processador():
@@ -19,7 +20,7 @@ class Processador():
             'reserva': ReservaNegocio(kwargs.get('oid')),
             'item-reserva': None,
             'gestor': GestorNegocio(kwargs.get('oid')),
-            'solicitante': None
+            'localizacao': LocalizacaoNegocio(kwargs.get('oid'))
         }
         return methods
 

@@ -10,6 +10,9 @@ urlpatterns = [
     path('categorias/<slug:action>/', views.categorias, name='manage-categoria'),
     path('categorias/<int:oid>/<slug:action>/', views.categorias, name='manage-categoria'),
 
+    path('localizacoes/', views.localizacoes, name='manage-localizacao'),
+    path('localizacoes/<int:oid>/', views.localizacoes, name='manage-localizacao'),
+
     path('espacos/', views.espacos, name='espacos'),
     path('espacos/<slug:action>/', views.espacos, name='manage-espaco'),
     path('espacos/<int:oid>/<slug:action>/', views.espacos, name='manage-espaco'),
@@ -22,5 +25,4 @@ urlpatterns = [
     path('reservas/<slug:action>/', views.reservas, name='manage-reservas'),
 
     path('json/', views.events, name='events')
-
 ]

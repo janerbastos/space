@@ -22,6 +22,11 @@ def categorias(request, oid=None, action='list'):
     return Processador().run(request, tipo='categoria', oid=oid, action=action)
 
 
+def localizacoes(request, oid=None):
+    action = request.GET.get('action', 'list')
+    return Processador().run(request, tipo='localizacao', oid=oid, action=action)
+
+
 def espacos(request, oid=None, action='list'):
     return Processador().run(request, tipo='espaco', oid=oid, action=action)
 
