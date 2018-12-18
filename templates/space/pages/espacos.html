@@ -6,7 +6,7 @@
         <div class="text-muted pt-3">
             {% if action == 'list' %}
                 <p>
-                    <a href="{% url 'space:manage-espaco' 'create' %}"><i class="fa fa-plus-circle"></i> Create</a>
+                    <a href="{% url 'space:espacos' %}?action=create"><i class="fa fa-plus-circle"></i> Create</a>
                 </p>
             {% endif %}
             {% if form %}
@@ -16,14 +16,17 @@
                     <input type="submit" value="Gravar" class="btn btn-success">
                     <a href="{% url 'space:espacos' %}" class="btn btn-warning">Fechar</a>
                     {% if object %}
-                        <a href="{% url 'space:manage-espaco' object.id 'delete' %}" class="btn btn-danger">Excluir</a>
+                        <a href="{% url 'space:espacos' object.id %}?action=delete" class="btn btn-danger">Excluir</a>
                     {% endif %}
                 </form>
             {% else %}
                 {% if objects %}
                     <ul>
                         {% for item in objects %}
-                        <li><a href="{% url 'space:manage-espaco' item.id 'update' %}">{{item}}</a></li>
+                        <li>
+                            <a href="{% url 'space:espacos' item.id %}?action=update&localizador={{item.localizacao.id}}">{{item}}</a>
+                            &nbsp;->&nbsp;<span>{{item.localizacao}}</span>
+                        </li>
                         {% endfor %}
                     </ul>
                 {% endif %}

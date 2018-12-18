@@ -52,12 +52,14 @@
                 <div class="card card-body">
                     {{ item.descricao }}, <a href="#">A. S</a>&nbsp;<a href="#">D. S</a>
                     <ul>
-                    {% for i in item.dados_reserva.all %}
+                    {% with reservas=item.dados_reserva.all %}
+                    {% for i in reservas %}
                         <li><strong>{{i.espaco.nome}}</strong>.<br>
-                            Período: de {{ i.inicio_at }} até {{ i.termino_at }}<br>
+                            Período: de {{ i.inicio_at|date:'d/m/Y' }} <strong>até</strong> {{ i.termino_at|date:'d/m/Y' }}<br>
                             Status: {{ i.get_info_reserva_display }}
                         </li>
                     {% endfor %}
+                    {% endwith %}
                     </ul>
                 </div>
             </div>

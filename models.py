@@ -67,7 +67,7 @@ class Espaco(models.Model):
     descricao = models.TextField(null=True, blank=True)
     gestor = models.ForeignKey(Gestor, on_delete=models.CASCADE)
     categoria = models.ForeignKey(CategoriaEspaco, on_delete=models.CASCADE)
-    localizacao = models.ForeignKey(Localizacao, on_delete=models.CASCADE)
+    localizacao = models.ForeignKey(Localizacao, on_delete=models.CASCADE, related_name='espacos_deste')
     permiti_locacao = models.BooleanField(default=False)
 
 

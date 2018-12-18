@@ -56,8 +56,7 @@ class GestorNegocio(Negocio):
     def list(self, request):
         gestores = Gestor.objects.all()
         data = configure(None, 'Gestores', 'Relação de conteúdos encontreado.', None, gestores, 'gestores', 'list')
-        if request.is_ajax():
-            
+        if request.is_ajax():   
             html_string = render_to_string(self.paginas, data)
             return JsonResponse({'result': html_string}, status=200)
         return render(request, self.template, context=data)

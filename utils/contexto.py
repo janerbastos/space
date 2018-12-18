@@ -33,3 +33,8 @@ def excluir_ultimo_item(url):
     aux = array[:len(array)-1]
     new = '/'.join(i for i in aux)
     return '/%s/' % new
+
+
+def redirect_if_param(response, param):
+    response['Location'] += '?' + param
+    return response

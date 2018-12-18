@@ -50,15 +50,21 @@
                     element.attr('title', event.description);
                 },
                 eventClick: function(event) {
-                    if (event.url) {
-                        $(".modal-title").html(event.title);
+                    
+                        $(".modal-title").html(event.title+' '+event.id);
+                        $('.modal-body').html(
+                            '<strong>Objetivo:</strong><br>'+
+                            event.description + 
+                            '<br><br>Inicio: '+event.start.format('D/M/YYYY') +
+                            '<br>Termino: '+event.end.format('D/M/YYYY')
+                        );
                         $("#form-modal").modal();
                         return false;
-                    }
+                    
                 },
 
                 dayClick: function(date, event, view) {
-                    //alert('Clicked on: ' + date.format('D/M/YYYY'));
+                    console.log(date)
                     $(".modal-title").html('Nova Reserva');
                     $.get("http://localhost:8000/space/reservas/create/?start="+date.format('D/M/YYYY'),
                         function(data, status){
@@ -107,14 +113,15 @@
                         <a class="dropdown-item" href="{% url 'space:categorias' %}">Categorias</a>
                         <a class="dropdown-item" href="{% url 'space:espacos' %}">Espaços Fisicos</a>
                         <a class="dropdown-item" href="{% url 'space:gestores' %}">Gestores</a>
-                        <a class="dropdown-item" href="{% url 'space:manage-localizacao' %}">Localização</a>
+                        <a class="dropdown-item" href="{% url 'space:manage-localizador' %}">Localização</a>
                         <div class="dropdown-divider"></div>
                         <a href="{% url 'space:reservas' %}" class="dropdown-item">Reservas</a>
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="POST">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>

@@ -10,12 +10,11 @@ urlpatterns = [
     path('categorias/<slug:action>/', views.categorias, name='manage-categoria'),
     path('categorias/<int:oid>/<slug:action>/', views.categorias, name='manage-categoria'),
 
-    path('localizacoes/', views.localizacoes, name='manage-localizacao'),
-    path('localizacoes/<int:oid>/', views.localizacoes, name='manage-localizacao'),
+    path('localizadores/', views.localizacoes, name='manage-localizador'),
+    path('localizadores/<int:oid>/', views.localizacoes, name='manage-localizador'),
 
     path('espacos/', views.espacos, name='espacos'),
-    path('espacos/<slug:action>/', views.espacos, name='manage-espaco'),
-    path('espacos/<int:oid>/<slug:action>/', views.espacos, name='manage-espaco'),
+    path('espacos/<int:oid>/', views.espacos, name='espacos'),
 
     path('gestores/', views.gestores, name='gestores'),
     path('gestores/<slug:action>/', views.gestores, name='manage-gestores'),

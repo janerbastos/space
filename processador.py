@@ -15,7 +15,7 @@ class Processador():
     def __configure(**kwargs):
         methods = {
             'categoria': CategoriaNegocio(kwargs.get('oid')),
-            'espaco': EspacoNegocio(kwargs.get('oid')),
+            'espaco': EspacoNegocio(kwargs.get('oid_l'), kwargs.get('oid')),
             'item-espaco': None,
             'reserva': ReservaNegocio(kwargs.get('oid')),
             'item-reserva': None,
