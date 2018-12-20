@@ -70,12 +70,11 @@ def events(request):
         json_data += '{"id": "%s", ' % item.id
         json_data += '"title": "%s", ' % item.espaco.nome
         json_data += '"description": "%s<br>Solicitante: <strong>%s</strong>", ' % (item.reserva.descricao, item.reserva.solicitante.get_full_name())
-        json_data += '"start": "%s", ' % item.inicio_at.strftime("%Y-%m-%dT%H:%M:%S")
-        json_data += '"end": "%s"}' % item.termino_at.strftime("%Y-%m-%dT%H:%M:%S")
+        json_data += '"start": "%s", ' % item.inicio_at.strftime("%Y-%m-%d %H:%M:%S")
+        json_data += '"end": "%s"}' % item.termino_at.strftime("%Y-%m-%d %H:%M:%S")
         if i < comprimento:
             json_data += ', '
         i += 1
     json_data += ']'
     data = json.loads(json_data.encode('utf-8'))
-    print(data)
     return JsonResponse(data, safe=False)

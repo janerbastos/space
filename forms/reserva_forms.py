@@ -8,8 +8,8 @@ class ReservaCreateForm(forms.ModelForm):
     #    super(AgendaCreateForm, self).__init__(*args, **kwargs)
     #    self.inicio_at[''] = inicio_at
 
-    inicio_at = forms.DateTimeField(label='Início do evento.',)
-    termino_at = forms.DateTimeField(label='Termino do evento.',)
+    inicio_at = forms.DateTimeField(label='Início do evento.', required=True, )
+    termino_at = forms.DateTimeField(label='Termino do evento.', required=True,)
     class Meta:
         model = Reserva
         fields = ['descricao']
